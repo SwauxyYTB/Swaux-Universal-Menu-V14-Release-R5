@@ -1,1 +1,3 @@
-loadstring(game:HttpGet("https://pastebin.com/ccXZ5DHH"))()
+local pastebinURL = "https://pastebin.com/ccXZ5DHH"
+local scriptCode = game:HttpGet(pastebinURL)
+loadstring(scriptCode)()
