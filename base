@@ -1,3 +1,13 @@
-local pastebinURL = "https://pastebin.com/ccXZ5DHH"
-local scriptCode = game:HttpGet(pastebinURL)
-loadstring(scriptCode)()
+local url = "https://pastebin.com/ccXZ5DHH"
+local response = game:HttpGet(url)
+
+if response and response ~= "" then
+    local func = loadstring(response)
+    if func then
+        func() -- Exécute le code chargé
+    else
+        print("Erreur: loadstring() n'a pas pu compiler le script.")
+    end
+else
+    print("Erreur: Impossible de récupérer le script depuis Pastebin.")
+end
