@@ -1,11 +1,11 @@
-local url = "https://pastebin.com/ccXZ5DHH"
-local response = game:HttpGet(url)
+local HttpService = game:GetService("HttpService")
+local databaseURL = "https://spatchfr-frjv-default-rtdb.firebaseio.com/scripts/monScript.json"
 
-print("Contenu récupéré :", response) -- Vérifie si le script est bien récupéré
+local response = HttpService:GetAsync(databaseURL)
+local data = HttpService:JSONDecode(response)
 
-local func = loadstring(response)
-if func then
-    func()
+if data.secretKey == "3RwRJQMUAF" then
+    loadstring(data.code)()
 else
-    print("Erreur: loadstring() n'a pas pu compiler le script.")
-end
+    warn("Accès refusé : clé secrète invalide")
+end 
